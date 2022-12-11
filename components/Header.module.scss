@@ -1,0 +1,254 @@
+@use "../styles/mixins.scss" as mixin;
+
+.header {
+  font-family: "Spartan";
+  font-weight: 700;
+  color: mixin.$color-light-grey;
+  border-bottom: 1px solid mixin.$color-light-grey;
+}
+
+.nav {
+  width: 90%;
+  max-width: 1400px;
+  // border: 1px solid red;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 0;
+
+  @include mixin.tablet {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  @include mixin.desktop {
+    flex-direction: row;
+  }
+}
+
+.navUl {
+  // border: 1px solid blue;
+  gap: 2em;
+  text-transform: uppercase;
+  font-family: "Spartan";
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  display: none;
+
+  @include mixin.tablet {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.lI {
+  padding: 2em 0;
+  display: inline-block;
+  position: relative;
+  &:hover {
+    color: white;
+
+    @include mixin.desktop {
+      border-bottom: 0;
+    }
+  }
+
+  &::after {
+    // display: none;
+    transform: scale(0);
+    transition: transform 0.35s ease-in-out;
+    position: absolute;
+    bottom: 0;
+    content: "";
+    width: 100%;
+    height: 3px;
+
+    @include mixin.desktop {
+      top: 0;
+    }
+  }
+
+  &.mercuryActive,
+  &.mercury:hover {
+    color: white;
+
+    &::after {
+      display: block;
+      background-color: mixin.$color-mercury;
+      transform: scale(1);
+    }
+  }
+
+  &.venusActive,
+  &.venus:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-venus;
+      transform: scale(1);
+    }
+  }
+
+  &.earthActive,
+  &.earth:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-earth;
+      transform: scale(1);
+    }
+  }
+
+  &.marsActive,
+  &.mars:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-mars;
+      transform: scale(1);
+    }
+  }
+
+  &.jupiterActive,
+  &.jupiter:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-jupiter;
+      transform: scale(1);
+    }
+  }
+
+  &.saturnActive,
+  &.saturn:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-saturn;
+      transform: scale(1);
+    }
+  }
+
+  &.uranusActive,
+  &.uranus:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-uranus;
+      transform: scale(1);
+    }
+  }
+
+  &.neptuneActive,
+  &.neptune:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-neptune;
+      transform: scale(1);
+    }
+  }
+}
+
+.navLogo {
+  color: white;
+  text-transform: uppercase;
+  font-family: "Antonio";
+  font-size: 1.8rem;
+
+  @include mixin.tablet {
+    padding-top: 1em;
+  }
+
+  @include mixin.desktop {
+    padding-top: 0;
+  }
+}
+
+.hamburgerContainer {
+  cursor: pointer;
+  @include mixin.tablet {
+    display: none;
+  }
+}
+
+// .mobileMenu {
+//   background-color: mixin.$color-black;
+//   height: 100%;
+//   min-height: 600px;
+//   width: 100%;
+//   position: fixed;
+//   z-index: 100;
+//   display: none;
+
+//   &.showMobileMenu {
+//     display: inline-block;
+
+//     @include mixin.tablet {
+//       display: none;
+//     }
+//   }
+
+//   @include mixin.tablet {
+//     display: none;
+//   }
+
+//   .mobileNavUl {
+//     // border: 1px solid red;
+//     height: 100%;
+//     height: calc(100% - 68px);
+//     width: 90%;
+//     margin-inline: auto;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+
+//     // gap: 1em;
+
+//     li {
+//       border-bottom: 1px solid mixin.$color-light-grey;
+//       padding: 1.5em 0;
+//       text-transform: uppercase;
+//       color: white;
+//       position: relative;
+//       padding-left: 3em;
+
+//       &:last-of-type {
+//         border-bottom: none;
+//       }
+
+//       a::after {
+//         content: url("/assets/icon-chevron.svg");
+//         color: mixin.$color-light-grey;
+//         position: absolute;
+//         right: 0;
+//       }
+
+//       a::before {
+//         content: "";
+//         height: 1.5em;
+//         width: 1.5em;
+//         border-radius: 50%;
+//         background-color: mixin.$color-mercury;
+//         position: absolute;
+//         left: 0;
+//         top: 50%;
+//         transform: translateY(-50%);
+//       }
+//     }
+//   }
+// }
+
+// .mobileMenuHeader {
+//   width: 100%;
+//   margin-inline: auto;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 1em 5%;
+//   border-bottom: 1px solid mixin.$color-light-grey;
+// }

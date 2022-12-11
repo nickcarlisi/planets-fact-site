@@ -7,7 +7,7 @@ import data from "/data/data.json";
 import PlanetDescription from "../components/PlanetDescription";
 import Stats from "../components/Stats";
 
-export default function Home() {
+export default function Earth() {
   return (
     <div className={styles.container}>
       <Head>
@@ -17,7 +17,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <Nav />
+        <Nav activepage="earth" />
         <PlanetDescription
           planetName={data[2].name}
           planetImg={data[2].images.planet}

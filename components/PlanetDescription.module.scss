@@ -1,0 +1,413 @@
+@use "../styles/mixins.scss" as mixin;
+
+.container {
+  // border: 1px solid red;
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  font-family: "Spartan";
+  // font-weight: 700;
+
+  @include mixin.tablet {
+    width: 90%;
+  }
+}
+
+.grid {
+  // border: 1px solid red;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "btnContainer"
+    "imgContainer"
+    "copyContainer";
+
+  @include mixin.tablet {
+    column-gap: 4em;
+    row-gap: 1em;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "imgContainer imgContainer"
+      "copyContainer btnContainer";
+  }
+
+  @include mixin.desktop {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "imgContainer copyContainer"
+      "imgContainer btnContainer";
+  }
+
+  .btnContainer {
+    grid-area: btnContainer;
+  }
+  .imgContainer {
+    position: relative;
+    grid-area: imgContainer;
+    // border: 1px solid white;
+    // height: 500px;
+    height: 300px;
+    width: 300px;
+    margin: 5em auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include mixin.tablet {
+      height: 400px;
+      width: 400px;
+    }
+
+    @include mixin.desktop {
+      height: 500px;
+      width: 500px;
+    }
+
+    .planetContainer {
+      position: relative;
+      // border: 1px solid pink;
+    }
+
+    .zoomedImg {
+      width: 25%;
+      height: 25%;
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @include mixin.desktop {
+      margin: 0 auto;
+    }
+
+    .sizeMercury {
+      width: 50%;
+      height: 50%;
+    }
+
+    .sizeVenus {
+      width: 70%;
+      height: 70%;
+    }
+
+    .sizeEarth {
+      width: 80%;
+      height: 80%;
+    }
+
+    .sizeMars {
+      width: 50%;
+      height: 50%;
+    }
+
+    .sizeJupiter {
+      width: 100%;
+      height: 100%;
+    }
+
+    .sizeSaturn {
+      width: 100%;
+      height: 100%;
+    }
+
+    .sizeUranus {
+      width: 70%;
+      height: 70%;
+    }
+
+    .sizeNeptune {
+      width: 70%;
+      height: 70%;
+    }
+  }
+  .copyContainer {
+    grid-area: copyContainer;
+  }
+}
+
+.planetName {
+  font-size: 3.5rem;
+  font-family: "Antonio";
+  text-transform: uppercase;
+
+  @include mixin.desktop {
+    font-size: 4.5rem;
+  }
+}
+
+.planetPara {
+  font-size: 0.75rem;
+  line-height: 1.6;
+  padding: 2em 0;
+  width: 90%;
+  margin-inline: auto;
+
+  @include mixin.tablet {
+    width: 100%;
+  }
+
+  @include mixin.desktop {
+    font-size: 0.9rem;
+  }
+}
+
+.source {
+  color: mixin.$color-light-grey;
+  font-size: 0.75rem;
+
+  @include mixin.desktop {
+    font-size: 0.9rem;
+  }
+
+  .wiki {
+    font-weight: bold;
+    text-decoration: underline;
+    position: relative;
+
+    &::after {
+      content: url("/assets/icon-source.svg");
+      position: absolute;
+      padding-left: 0.5em;
+      // top: 50%;
+      // transform: translateY(-50%);
+    }
+  }
+}
+
+.planetName,
+.planetPara,
+.source {
+  text-align: center;
+
+  @include mixin.tablet {
+    text-align: left;
+  }
+}
+
+.btnContainer {
+  border-bottom: 1px solid mixin.$color-light-grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 5%;
+
+  @include mixin.tablet {
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 0;
+    padding: 0;
+  }
+}
+
+.btn {
+  background: none;
+  border: none;
+  color: mixin.$color-light-grey;
+  padding: 1.5em 0;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  font-family: "Spartan";
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: all 0.35s ease-in-out;
+
+  &:hover {
+    color: white;
+  }
+
+  @include mixin.tablet {
+    color: white;
+  }
+
+  @include mixin.desktop {
+    font-size: 0.75rem;
+  }
+
+  &::after {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    content: "";
+    width: 100%;
+    height: 3px;
+
+    @include mixin.tablet {
+      display: none;
+    }
+  }
+
+  &.mercury,
+  &.mercury:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-mercury;
+
+      @include mixin.tablet {
+        display: none;
+      }
+    }
+
+    @include mixin.tablet {
+      background-color: mixin.$color-mercury;
+      border: 1px solid mixin.$color-mercury;
+    }
+  }
+
+  &.venus,
+  &.venus:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-venus;
+
+      @include mixin.tablet {
+        display: none;
+      }
+    }
+
+    @include mixin.tablet {
+      background-color: mixin.$color-venus;
+      border: 1px solid mixin.$color-venus;
+    }
+  }
+
+  &.earth,
+  &.earth:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-earth;
+
+      @include mixin.tablet {
+        display: none;
+      }
+    }
+
+    @include mixin.tablet {
+      background-color: mixin.$color-earth;
+      border: 1px solid mixin.$color-earth;
+    }
+  }
+
+  &.mars,
+  &.mars:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-mars;
+
+      @include mixin.tablet {
+        display: none;
+      }
+    }
+
+    @include mixin.tablet {
+      background-color: mixin.$color-mars;
+      border: 1px solid mixin.$color-mars;
+    }
+  }
+
+  &.jupiter,
+  &.jupiter:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-jupiter;
+
+      @include mixin.tablet {
+        display: none;
+      }
+    }
+
+    @include mixin.tablet {
+      background-color: mixin.$color-jupiter;
+      border: 1px solid mixin.$color-jupiter;
+    }
+  }
+
+  &.saturn,
+  &.saturn:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-saturn;
+
+      @include mixin.tablet {
+        display: none;
+      }
+    }
+
+    @include mixin.tablet {
+      background-color: mixin.$color-saturn;
+      border: 1px solid mixin.$color-saturn;
+    }
+  }
+
+  &.uranus,
+  &.uranus:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-uranus;
+
+      @include mixin.tablet {
+        display: none;
+      }
+    }
+
+    @include mixin.tablet {
+      background-color: mixin.$color-uranus;
+      border: 1px solid mixin.$color-uranus;
+    }
+  }
+
+  &.neptune,
+  &.neptune:hover {
+    color: white;
+    &::after {
+      display: block;
+      background-color: mixin.$color-neptune;
+
+      @include mixin.tablet {
+        display: none;
+      }
+    }
+
+    @include mixin.tablet {
+      background-color: mixin.$color-neptune;
+      border: 1px solid mixin.$color-neptune;
+    }
+  }
+
+  @include mixin.tablet {
+    border: 1px solid mixin.$color-light-grey;
+    margin: 1em 0;
+    padding: 1.5em;
+
+    &:hover {
+      background-color: mixin.$color-dark-grey;
+      border: 1px solid mixin.$color-dark-grey;
+    }
+  }
+
+  .btnNum,
+  .internal,
+  .geology {
+    display: none;
+
+    @include mixin.tablet {
+      display: inline-block;
+    }
+  }
+}
+
+.btnNum {
+  color: mixin.$color-light-grey;
+  margin: 0 1em;
+}

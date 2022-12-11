@@ -1,0 +1,128 @@
+@use "../styles/mixins.scss" as mixin;
+
+.navLogo {
+  color: white;
+  text-transform: uppercase;
+  font-family: "Antonio";
+  font-size: 1.8rem;
+
+  @include mixin.tablet {
+    padding-top: 1em;
+  }
+
+  @include mixin.desktop {
+    padding-top: 0;
+  }
+}
+
+.hamburgerContainer {
+  cursor: pointer;
+  @include mixin.tablet {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  background-color: mixin.$color-black;
+  height: 100%;
+  min-height: 600px;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  display: none;
+
+  &.showMobileMenu {
+    display: inline-block;
+
+    @include mixin.tablet {
+      display: none;
+    }
+  }
+
+  @include mixin.tablet {
+    display: none;
+  }
+
+  .mobileNavUl {
+    // border: 1px solid red;
+    height: 100%;
+    height: calc(100% - 68px);
+    width: 90%;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    // gap: 1em;
+
+    li {
+      border-bottom: 1px solid mixin.$color-light-grey;
+      padding: 1.5em 0;
+      text-transform: uppercase;
+      color: white;
+      position: relative;
+      padding-left: 3em;
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+
+      .navLink::after {
+        content: url("/assets/icon-chevron.svg");
+        color: mixin.$color-light-grey;
+        position: absolute;
+        right: 0;
+      }
+
+      .navLink::before {
+        content: "";
+        height: 1.5em;
+        width: 1.5em;
+        border-radius: 50%;
+        background-color: mixin.$color-mercury;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .venus::before {
+        background-color: mixin.$color-venus;
+      }
+
+      .earth::before {
+        background-color: mixin.$color-earth;
+      }
+
+      .mars::before {
+        background-color: mixin.$color-mars;
+      }
+
+      .jupiter::before {
+        background-color: mixin.$color-jupiter;
+      }
+
+      .saturn::before {
+        background-color: mixin.$color-saturn;
+      }
+
+      .uranus::before {
+        background-color: mixin.$color-uranus;
+      }
+
+      .neptune::before {
+        background-color: mixin.$color-neptune;
+      }
+    }
+  }
+}
+
+.mobileMenuHeader {
+  width: 100%;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 5%;
+  border-bottom: 1px solid mixin.$color-light-grey;
+}
