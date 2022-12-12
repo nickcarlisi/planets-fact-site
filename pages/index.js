@@ -17,7 +17,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <Nav />
+        <Nav activepage="earth" />
         <PlanetDescription
           planetName={data[2].name}
           planetImg={data[2].images.planet}
