@@ -108,7 +108,11 @@ export default function PlanetDescription(props) {
 
         <div className={style.imgContainer}>
           <div className={`${style.planetContainer} ${planetSize}`}>
-            <Image src={imgSrc} fill></Image>
+            <Image
+              src={imgSrc}
+              fill
+              alt={`${props.planetName} illustration`}
+            ></Image>
           </div>
           {geology ? (
             <div className={style.zoomedImg}>
@@ -116,6 +120,7 @@ export default function PlanetDescription(props) {
                 src={props.geologyImg}
                 layout="fill"
                 objectFit="contain"
+                alt={`Zoomed in view of surface of ${props.planetName}`}
               ></Image>
             </div>
           ) : (
